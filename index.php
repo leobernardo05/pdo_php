@@ -12,7 +12,8 @@ try {
         select * from tb_usuarios
     ';
 
-    $conexao->query($query);
+    $stmt = $conexao->query($query);
+    $stmt->fetchAll();
 
 } catch (PDOException $e) {
 
