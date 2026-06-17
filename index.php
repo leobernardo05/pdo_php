@@ -13,7 +13,14 @@ try {
     ';
 
     $stmt = $conexao->query($query);
-    $stmt->fetchAll();
+    $stmt->fetchAll(PDO::FETCH_OBJ);
+
+
+    echo '<pre>';
+    print_r($lista);
+    echo '</pre>';
+
+    echo $lista[2][2];
 
 } catch (PDOException $e) {
 
