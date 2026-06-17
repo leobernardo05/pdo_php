@@ -12,8 +12,12 @@ try {
         select * from tb_usuarios
     ';
 
-    $stmt = $conexao->query($query);
-    $lista_usuarios = $stmt->fetchAll(PDO::FETCH_OBJ);
+    //$stmt = $conexao->query($query);
+
+    foreach($conexao->query($query) as $key => $value){
+        print_r($value);   
+    }
+    /*$lista_usuarios = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 
     // echo '<pre>';
@@ -23,7 +27,7 @@ try {
     foreach($lista_usuarios as $key => value) {
         echo $value['nome'];
         echo '<hr>';
-    }
+    }*/
 
 } catch (PDOException $e) {
 
