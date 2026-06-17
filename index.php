@@ -7,32 +7,24 @@ $senha = '';
 try {
 
     $conexao = new PDO($dsn, $usuario, $senha);
-
-    $query = '
-        select * from tb_usuarios
-    ';
-
-    //$stmt = $conexao->query($query);
-
-    foreach($conexao->query($query) as $key => $value){
-        print_r($value);   
-    }
-    /*$lista_usuarios = $stmt->fetchAll(PDO::FETCH_OBJ);
-
-
-    // echo '<pre>';
-    // print_r($usuario);
-    // echo '</pre>';
-
-    foreach($lista_usuarios as $key => value) {
-        echo $value['nome'];
-        echo '<hr>';
-    }*/
-
 } catch (PDOException $e) {
-
     echo 'Erro: ' . $e->getCode() . ' - Mensagem: ' . $e->getMessage();
-
 }
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+    </head>
+    <body>
+        <form action="">
+            <input type="text" placeholder="usuario">
+            <input type="password" name="" id="" placeholder="senha">
+            <button type="submit">entrar</button>
+        </form>
+    </body>
+</html>
 
 ?>
