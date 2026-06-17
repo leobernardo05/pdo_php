@@ -9,18 +9,21 @@ try {
     $conexao = new PDO($dsn, $usuario, $senha);
 
     $query = '
-        select * from tb_usuarios where id = 6
+        select * from tb_usuarios
     ';
 
     $stmt = $conexao->query($query);
-    $usuario = $stmt->fetchAll(PDO::FETCH_OBJ);
+    $lista_usuarios = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 
-    echo '<pre>';
-    print_r($usuario);
-    echo '</pre>';
+    // echo '<pre>';
+    // print_r($usuario);
+    // echo '</pre>';
 
-    echo $usuario->nome;
+    foreach($lista_usuarios as $key => value) {
+        echo $value['nome'];
+        echo '<hr>';
+    }
 
 } catch (PDOException $e) {
 
