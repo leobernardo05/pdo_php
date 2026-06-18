@@ -12,13 +12,14 @@
             $query .= "AND senha = '{$_POST['senha']}'";
 
             $stmt = $conexao->prepare($query);
+            // atribui um valor a um marcador (melhor proteção)
             $stmt->bindValue(':usuario', $_POST['usuario']);
             $stmt->bindValue(':senha', $_POST['senha']);
 
             $stmt->execute();
 
             $usuario = $stmt->fetch();
-            
+
 
         } catch (PDOException $e) {
             echo 'Erro: ' . $e->getCode() . ' - Mensagem: ' . $e->getMessage();
