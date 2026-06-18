@@ -7,14 +7,18 @@
         try {
             $conexao = new PDO($dsn, $usuario, $senha);
         
-            $query = "insert into tb_usuarios(nome, email, senha)values('Jorge Sant Ana', 'jorge@teste.com.br','1234')";
-            $conexao->query($query); 
+            $query = "select * from tb_usuarios where";
+            $query .= "email = ";
+            $query .= "AND senha = '{$_POST['senha']}'";
 
-            $query = "insert into tb_usuarios(nome, email, senha)values('Leonardo Bernardo', 'leo@teste.com.br','1234')";
-            $conexao->query($query);  
+            $stmt = $conexao->prepare($query);
+            $stmt->bindValue(':usuario', $_POST['usuario']);
+            $stmt->bindValue(':senha', $_POST['senha']);
 
-            $query = "insert into tb_usuarios(nome, email, senha)values('Francisco Romão Figueiredo', 'francisco@teste.com.br','1234')";
-            $conexao->query($query);            
+            $stmt->execute();
+
+            $usuario = $stmt->fetch();
+            
 
         } catch (PDOException $e) {
             echo 'Erro: ' . $e->getCode() . ' - Mensagem: ' . $e->getMessage();
