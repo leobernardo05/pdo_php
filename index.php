@@ -1,15 +1,16 @@
 <?php
+    if(!empty($_POST['usuario']) && !empty($_POST['senha']))
+    $dsn = 'mysql:host=localhost;dbname=php_com_pdo';
+    $usuario = 'root';
+    $senha = '';
 
-$dsn = 'mysql:host=localhost;dbname=php_com_pdo';
-$usuario = 'root';
-$senha = '';
-
-try {
-
-    $conexao = new PDO($dsn, $usuario, $senha);
-} catch (PDOException $e) {
-    echo 'Erro: ' . $e->getCode() . ' - Mensagem: ' . $e->getMessage();
-}
+    try {
+        $conexao = new PDO($dsn, $usuario, $senha);
+        $query .= "email = ''"
+    } catch (PDOException $e) {
+        echo 'Erro: ' . $e->getCode() . ' - Mensagem: ' . $e->getMessage();
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,11 +21,12 @@ try {
     </head>
     <body>
         <form action="">
-            <input type="text" placeholder="usuario">
-            <input type="password" name="" id="" placeholder="senha">
-            <button type="submit">entrar</button>
+            <input type="text" placeholder="usuario" name="usuario">
+            <br/>
+            <input type="password" name="senha" id="" placeholder="senha">
+            <br/>
+            <button type="submit">Entrar</button>
         </form>
     </body>
 </html>
 
-?>
